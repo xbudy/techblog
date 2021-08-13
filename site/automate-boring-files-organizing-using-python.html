@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Python files organizer, automate boring files organizing using python
+    </title>
+    <link rel="stylesheet" href="blog/screen.css?v=a12b9ce030" />
+
+    <script>
+      if (localStorage.getItem("alto_dark") == "true") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+      .async-hide {
+        opacity: 0 !important;
+      }
+    </style>
+
+    <meta
+      name="description"
+      content="code a files organizer using python script it will organize the files by their types -- Hello today we are going to code a files organizer using py..."
+    />
+    <link rel="icon" href="/blog/favicon.ico" type="image/png" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <style>
+      :root {
+        --ghost-accent-color: #00bbff;
+      }
+    </style>
+  </head>
+
+  <body class="post-template">
+    <!-- Google Tag Manager (noscript) -->
+
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="site">
+      <header class="site-header container">
+        <div class="navbar">
+          <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="/" target="_blank"></a>
+            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+            <a class="logo" href="/">
+              <span class="logo-text">Icodes.tech</span>
+            </a>
+          </div>
+          <div class="navbar-right">
+            <nav class="main-menu hidden-xs hidden-sm hidden-md">
+              <ul class="nav-list u-plain-list">
+                <li class="menu-item menu-item-home menu-item-current">
+                  <a class="menu-item-link" href="/">Home</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="toggle-track">
+              <div class="toggle-moon">
+                <i class="icon icon-brightness-2"></i>
+              </div>
+              <div class="toggle-sun">
+                <i class="icon icon-white-balance-sunny"></i>
+              </div>
+              <div class="toggle-thumb"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="site-content container">
+        <div class="row">
+          <div class="content-column col-xl-9 col-lg-9">
+            <div class="content-area">
+              <main class="site-main">
+                <article class="post tag-webdevelopment single-post">
+                  <header class="post-header big-title container medium">
+                    <h1 class="post-title">
+                      Python files organizer, automate boring files organizing
+                      using python
+                    </h1>
+                    <div class="post-meta">
+                      <span class="post-meta-item post-meta-date">
+                        <time datetime="2021-07-20">Jul 20, 2021</time>
+                      </span>
+                      <span class="post-meta-item post-meta-length">
+                        5 min read
+                      </span>
+                      <span class="post-meta-item post-meta-tags">
+                        <a
+                          class="post-tag post-tag-webdevelopment"
+                          title="Python"
+                        >
+                          Python
+                        </a>
+                      </span>
+                    </div>
+                  </header>
+                  <!--div class="post-media container large">
+                    <div class="u-placeholder horizontal">
+                      <a
+                        class="post-image-link"
+                        href="/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/"
+                      >
+                        <img
+                          class="post-image u-object-fit lazyautosizes lazyload"
+                          data-srcset="https://1.bp.blogspot.com/-u5buFrznJWY/YQV4rx-2M0I/AAAAAAAAARE/O5wo1f2L2O8E1xRfVEZbqVJEv8BWZLFAwCLcBGAsYHQ/s16000/internet-speed-tester.webp"
+                          data-sizes="auto"
+                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                          alt="Ecommerce Replatforming: Know When to Consider a Migration"
+                          sizes="960px"
+                        />
+                      </a>
+                    </div>
+                  </div-->
+                  <div class="post-content kg-canvas u-text-format">
+                    <h2>Intro</h2>
+                    <p>
+                      Hello today we are going to code a files organizer using
+                      python script it will organize the files by their types
+                      for example it will put all files with extension (.png) in
+                      a folder called Pictures let's code ...
+                    </p>
+                    <h2>Coding</h2>
+                    <h3>Importing needed modules</h3>
+                    <p>those are the modules we are going to use</p>
+                    <p>if you have any problem you can post it on comments</p>
+                    <div>
+                      <pre><code>import os
+import pathlib
+import shutil
+import fnmatch</code></pre>
+                    </div>
+                    <h3>
+                      Preparing the default folder for every type of files
+                    </h3>
+                    <p>
+                      So now we are going to set a folder for every type for
+                      example we want to move the pictures to the folder in path
+                      <span
+                        color="var(--text-editor-body-color)"
+                        face="var(--font-base)"
+                        style="
+                          font-size: inherit;
+                          font-weight: var(--font-weight-normal);
+                        "
+                      >
+                        '/home/rin/Downloads/'
+                      </span>
+                    </p>
+                    <p>
+                      in my case i am using linux on windows the paths will look
+                      like '
+                      <span class="aCOpRe">C:\rin\Brink\Pictures'</span>
+                    </p>
+                    <pre><code>## define path for every category
+file_folder={
+    'Music':'/home/rin/Downloads/',
+    'Pictures':'/home/rin/Pictures/',
+    'Documents':'/home/rin/Documents/',
+    'Archives':'/home/rin/Archives/',
+    'Videos':'/home/rin/Videos/',
+    'Codes':'/home/rin/Codes/'
+}</code></pre>
+                    <h3>Defining the type of file by the extension</h3>
+                    <h4>What's extension ?</h4>
+                    <p class="msg msg--info">
+                      A
+                      <b>file extension</b>
+                      or
+                      <b>file name extension</b>
+                      is the ending of a file that helps identify the type of
+                      file in operating systems, such as Microsoft Windows. In
+                      Microsoft Windows, the file name extension is a period
+                      that is often followed by three characters but may also be
+                      one, two, or four characters long.
+                    </p>
+                    <p class="msg msg--info">
+                      As an example, the file name "myfile.txt" has a file
+                      extension of ".txt," which is a file name extension
+                      associated with text files.
+                    </p>
+                    <p>So code :</p>
+                    <pre><code>## define the type of every extension
+file_type={'Pictures':['.jpg', '.jpeg', '.jpe','.png','.jp2','.ico', '.wbmp','.j2k', '.jpf', '.jpx', '.jpm', '.mj2','.svg', '.svgz','.webp','.gif']
+,'Music':['mp3']
+,'Videos':['.mp4','.srt','.mkv','.3gp','.m4a']
+,'Documents':['.pdf','.docx','.doc','.csv','.txt','.xls','.xlsx','.log']
+,'Archives':['.zip','.tar']
+,'Codes':['.py']}</code></pre>
+                    <div></div>
+                    <h3>Main code</h3>
+                    <p>
+                      Now we take the path of the folder contains the files we
+                      want organize as example for me i want clean my download
+                      folder&nbsp;
+                    </p>
+                    <pre><code>path='/home/rin/Downloads/'
+</code></pre>
+                    <p>
+                      So now what we want to do is extracting all the files in
+                      the folder and check the type of every file then move it
+                      to the folder contains its type
+                    </p>
+                    <pre><code>files=os.listdir(path)# list of files in the folder
+for file in files:#for for every file in the list
+    extension=pathlib.Path(file).suffix #extension of file ex:(.txt)
+    #Documents
+    if extension in file_type['Documents']:#check if the file is a document
+        move=pathlib.Path(path+file).rename(file_folder['Documents']+file)# move the file to the folder conatins documents
+        #move=shutil.move(path+file,file_folder['Documents'])
+        print('success #### {} to {}'.format(file,move))
+    #Music    
+    if extension in file_type['Music']:
+        move=pathlib.Path(path+file).rename(file_folder['Music']+file)
+        #move=shutil.move(path+file,file_folder['Music'])
+        print('success #### {} to {}'.format(file,move))
+    #Pictures
+    if extension in file_type['Pictures']:
+        move=pathlib.Path(path+file).rename(file_folder['Pictures']+file)
+        #move=shutil.move(path+file,file_folder['Pictures'])
+        print('success #### {} to {}'.format(file,move))
+    #Videos
+    if extension in file_type['Videos']:
+        move=pathlib.Path(path+file).rename(file_folder['Videos']+file)
+        #move=shutil.move(path+file,file_folder['Videos'])
+        print('success #### {} to {}'.format(file,move))
+    #Archives
+    if extension in file_type['Archives']:
+        move=pathlib.Path(path+file).rename(file_folder['Archives']+file)
+        #move=shutil.move(path+file,file_folder['Archives'])
+        print('success #### {} to {}'.format(file,move))
+    #Codes
+    if extension in file_type['Codes']:
+        move=pathlib.Path(path+file).rename(file_folder['Codes']+file)
+        #move=shutil.move(path+file,file_folder['Codes'])
+        print('success #### {} to {}'.format(file,move))
+    else:
+        print('## '+file)</code></pre>
+                    <p><b>Note : You can add more types&nbsp;</b></p>
+                    <h2>Full source code&nbsp;</h2>
+                    <p>
+                      <b>
+                        DON'T FORGET TO CHANGE THE PATHS ALSO YOU CAN ADD MORE
+                        CATEGORY BE SMART ..
+                      </b>
+                    </p>
+                    <pre><code>import os
+import pathlib
+import shutil
+import fnmatch
+## define path for every category
+file_folder={
+    'Music':'/home/rin/Downloads/',
+    'Pictures':'/home/rin/Pictures/',
+    'Documents':'/home/rin/Documents/',
+    'Archives':'/home/rin/Archives/',
+    'Videos':'/home/rin/Videos/',
+    'Codes':'/home/rin/Codes/'
+}
+## define the type of every extension
+file_type={'Pictures':['.jpg', '.jpeg', '.jpe','.png','.jp2','.ico', '.wbmp','.j2k', '.jpf', '.jpx', '.jpm', '.mj2','.svg', '.svgz','.webp','.gif']
+,'Music':['mp3']
+,'Videos':['.mp4','.srt','.mkv','.3gp','.m4a']
+,'Documents':['.pdf','.docx','.doc','.csv','.txt','.xls','.xlsx','.log']
+,'Archives':['.zip','.tar']
+,'Codes':['.py']}
+
+path='/home/rin/Downloads/'
+files=os.listdir(path)# list of files in the folder
+for file in files:#for for every file in the list
+    extension=pathlib.Path(file).suffix #extension of file ex:(.txt)
+    #Documents
+    if extension in file_type['Documents']:#check if the file is a document
+        move=pathlib.Path(path+file).rename(file_folder['Documents']+file)# move the file to the folder conatins documents
+        #move=shutil.move(path+file,file_folder['Documents'])
+        print('success #### {} to {}'.format(file,move))
+    #Music    
+    if extension in file_type['Music']:
+        move=pathlib.Path(path+file).rename(file_folder['Music']+file)
+        #move=shutil.move(path+file,file_folder['Music'])
+        print('success #### {} to {}'.format(file,move))
+    #Pictures
+    if extension in file_type['Pictures']:
+        move=pathlib.Path(path+file).rename(file_folder['Pictures']+file)
+        #move=shutil.move(path+file,file_folder['Pictures'])
+        print('success #### {} to {}'.format(file,move))
+    #Videos
+    if extension in file_type['Videos']:
+        move=pathlib.Path(path+file).rename(file_folder['Videos']+file)
+        #move=shutil.move(path+file,file_folder['Videos'])
+        print('success #### {} to {}'.format(file,move))
+    #Archives
+    if extension in file_type['Archives']:
+        move=pathlib.Path(path+file).rename(file_folder['Archives']+file)
+        #move=shutil.move(path+file,file_folder['Archives'])
+        print('success #### {} to {}'.format(file,move))
+    #Codes
+    if extension in file_type['Codes']:
+        move=pathlib.Path(path+file).rename(file_folder['Codes']+file)
+        #move=shutil.move(path+file,file_folder['Codes'])
+        print('success #### {} to {}'.format(file,move))
+    else:
+        print('## '+file)
+</code></pre>
+                    <p>
+                      Feel free to develop the code and post any problem or
+                      request in the comments&nbsp;
+                    </p>
+
+                    <div>
+                      <div
+                        class="separator"
+                        style="clear: both; margin: 0 auto"
+                      >
+                        <a
+                          href="https://1.bp.blogspot.com/-t3DoP1teJx0/YQV9G7tmrsI/AAAAAAAAARM/Mn-5vhbX8_Eo8sVBtLYBXBlcpEWq3ZZ_QCLcBGAsYHQ/s0/files-organizer.webp"
+                          style="
+                            display: block;
+                            padding: 1em 0px;
+                            text-align: center;
+                          "
+                        >
+                          <img
+                            class="lazyload"
+                            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                            alt="Python files organizer, automate boring files organizing using python"
+                            height="175"
+                            width="412"
+                            data-srcset="https://1.bp.blogspot.com/-t3DoP1teJx0/YQV9G7tmrsI/AAAAAAAAARM/Mn-5vhbX8_Eo8sVBtLYBXBlcpEWq3ZZ_QCLcBGAsYHQ/s16000/files-organizer.webp"
+                            title="Python files organizer, automate boring files organizing using python"
+                          />
+                        </a>
+                      </div>
+                    </div>
+
+                    <!--kg-card-end: html-->
+                  </div>
+                  <div class="container medium">
+                    <!--div class="share u-hover-wrapper">
+                      <a
+                        class="share-item share-facebook u-hover-item"
+                        href="https://www.facebook.com/sharer.php?u=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-facebook"></i>
+                      </a>
+                      <a
+                        class="share-item share-twitter u-hover-item"
+                        href="https://twitter.com/intent/tweet?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;text=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-twitter"></i>
+                      </a>
+                      <a
+                        class="share-item share-pinterest u-hover-item"
+                        href="https://pinterest.com/pin/create/button/?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;media=&amp;description=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                        data-pin-do="none"
+                      >
+                        <i class="icon icon-pinterest"></i>
+                      </a>
+                      <a
+                        class="share-item share-linkedin u-hover-item"
+                        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;title=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-linkedin"></i>
+                      </a>
+                      <a
+                        class="share-item share-reddit u-hover-item"
+                        href="https://reddit.com/submit?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;title=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-reddit"></i>
+                      </a>
+                      <a
+                        class="share-item share-pocket u-hover-item"
+                        href="https://getpocket.com/edit?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-pocket"></i>
+                      </a>
+                    </div-->
+                    <section class="author">
+                      <div class="author-image-placeholder u-placeholder">
+                        <img
+                          class="author-image u-object-fit lazyload"
+                          data-srcset="https://0.gravatar.com/avatar/3e118fb9391e255fc972dea9534a3480?s=512&amp;d=monsterid&amp;r=g"
+                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                          srcset="
+                            data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                          "
+                          alt="mohsin"
+                        />
+                      </div>
+                      <div class="author-wrapper">
+                        <header class="author-header">
+                          <div class="author-header-wrapper">
+                            <h4 class="author-name">mohsin</h4>
+                          </div>
+                        </header>
+                        <div class="author-bio"></div>
+                      </div>
+                    </section>
+                  </div>
+                </article>
+                <section class="related-posts container medium">
+                  <h3 class="related-title">
+                    <span class="text">You might also like...</span>
+                  </h3>
+                  <div class="row">
+                    <div class="col-md-4 related-column">
+                      <article class="post">
+                        <!--div class="post-media">
+                          <div class="u-placeholder rectangle">
+                            <a
+                              class="post-image-link"
+                              href="/Code-a-simple-internet-speed-tester-using-python.html"
+                            >
+                              <img
+                                class="
+                                  post-image
+                                  u-object-fit
+                                  lazyautosizes
+                                  lazyload
+                                "
+                                data-srcset="https://1.bp.blogspot.com/-u5buFrznJWY/YQV4rx-2M0I/AAAAAAAAARE/O5wo1f2L2O8E1xRfVEZbqVJEv8BWZLFAwCLcBGAsYHQ/s16000/internet-speed-tester.webp"
+                                data-sizes="auto"
+                                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                alt="Ecommerce Replatforming: Know When to Consider a Migration"
+                                sizes="960px"
+                              />
+                            </a>
+                          </div>
+                        </div-->
+                        <header class="post-header">
+                          <h2 class="post-title">
+                            <a
+                              class="post-title-link"
+                              href="/Code-a-simple-internet-speed-tester-using-python.html"
+                            >
+                              Code a simple internet speed tester using python
+                            </a>
+                          </h2>
+                          <div class="post-meta">
+                            <span class="post-meta-item post-meta-date">
+                              <time datetime="2021-04-15">Apr 15, 2021</time>
+                            </span>
+                            <span class="post-meta-item post-meta-length">
+                              3 min read
+                            </span>
+                          </div>
+                        </header>
+                      </article>
+                    </div>
+                  </div>
+                </section>
+              </main>
+            </div>
+          </div>
+          <div class="sidebar-column col-xl-3 col-lg-3" style="width: 100%">
+            <aside class="widget-area">
+              <div class="widget widget-tags u-shadow">
+                <h4 class="widget-title">Tags</h4>
+                <div class="tag-feed">
+                  <div class="tag">
+                    <a class="tag-link">
+                      <span class="tag-name">Python</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      <footer class="site-footer container large">
+        <div class="copyright">
+          © 2021
+          <a href="https://www.icodes.tech/" target="_blank" rel="noopener">
+            ICODES.TECH
+          </a>
+          , made with ❤️ for a better web.
+        </div>
+
+        <div class="footer-social">
+          <a
+            class="footer-social-item footer-social-item-facebook"
+            href="https://www.facebook.com/gopareh/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a
+            class="footer-social-item footer-social-item-twitter"
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Twitter"
+          >
+            <i class="icon icon-twitter"></i>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+      <div class="canvas-close">
+        <i class="canvas-icon icon icon-window-close"></i>
+      </div>
+      <div class="mobile-menu"></div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="/blog/main.min.js?v=a12b9ce030"></script>
+  </body>
+</html>

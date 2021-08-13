@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Code a simple internet speed tester using python</title>
+    <link rel="stylesheet" href="blog/screen.css?v=a12b9ce030" />
+
+    <script>
+      if (localStorage.getItem("alto_dark") == "true") {
+        document.documentElement.classList.add("dark-mode");
+      }
+    </script>
+
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+      .async-hide {
+        opacity: 0 !important;
+      }
+    </style>
+
+    <meta
+      name="description"
+      content="Check your Internet speed using a script on python"
+    />
+    <link rel="icon" href="/blog/favicon.ico" type="image/png" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+    <style>
+      :root {
+        --ghost-accent-color: #00bbff;
+      }
+    </style>
+  </head>
+
+  <body class="post-template">
+    <!-- Google Tag Manager (noscript) -->
+
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="site">
+      <header class="site-header container">
+        <div class="navbar">
+          <div class="navbar-left">
+            <div class="burger hidden-lg hidden-xl"></div>
+            <a class="logo" href="/" target="_blank"></a>
+            <div class="sep hidden-xs hidden-sm hidden-sm"></div>
+            <a class="logo" href="/">
+              <span class="logo-text">Icodes.tech</span>
+            </a>
+          </div>
+          <div class="navbar-right">
+            <nav class="main-menu hidden-xs hidden-sm hidden-md">
+              <ul class="nav-list u-plain-list">
+                <li class="menu-item menu-item-home menu-item-current">
+                  <a class="menu-item-link" href="/">Home</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="toggle-track">
+              <div class="toggle-moon">
+                <i class="icon icon-brightness-2"></i>
+              </div>
+              <div class="toggle-sun">
+                <i class="icon icon-white-balance-sunny"></i>
+              </div>
+              <div class="toggle-thumb"></div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="site-content container">
+        <div class="row">
+          <div class="content-column col-xl-9 col-lg-9">
+            <div class="content-area">
+              <main class="site-main">
+                <article class="post tag-webdevelopment single-post">
+                  <header class="post-header big-title container medium">
+                    <h1 class="post-title">
+                      Code a simple internet speed tester using python
+                    </h1>
+                    <div class="post-meta">
+                      <span class="post-meta-item post-meta-date">
+                        <time datetime="2021-07-20">Jul 20, 2021</time>
+                      </span>
+                      <span class="post-meta-item post-meta-length">
+                        5 min read
+                      </span>
+                      <span class="post-meta-item post-meta-tags">
+                        <a
+                          class="post-tag post-tag-webdevelopment"
+                          title="Python"
+                        >
+                          Python
+                        </a>
+                      </span>
+                    </div>
+                  </header>
+                  <!--div class="post-media container large">
+                    <div class="u-placeholder horizontal">
+                      <a
+                        class="post-image-link"
+                        href="/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/"
+                      >
+                        <img
+                          class="post-image u-object-fit lazyautosizes lazyload"
+                          data-srcset="https://1.bp.blogspot.com/-u5buFrznJWY/YQV4rx-2M0I/AAAAAAAAARE/O5wo1f2L2O8E1xRfVEZbqVJEv8BWZLFAwCLcBGAsYHQ/s16000/internet-speed-tester.webp"
+                          data-sizes="auto"
+                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                          alt="Ecommerce Replatforming: Know When to Consider a Migration"
+                          sizes="960px"
+                        />
+                      </a>
+                    </div>
+                  </div-->
+                  <div class="post-content kg-canvas u-text-format">
+                    <h2>Intro</h2>
+                    <p>
+                      Hello, today we are going to build an internet's speed
+                      tester with python using speedtest-cli library. let's code
+                      !
+                    </p>
+                    <h2>Code</h2>
+                    <h3>Installation</h3>
+                    <h4>
+                      <a
+                        aria-hidden="true"
+                        class="anchor"
+                        id="user-content-pip--easy_install"
+                      ></a>
+                      pip / easy_install
+                    </h4>
+                    <pre>
+pip install speedtest-cli
+</pre
+                    >
+                    <p>or</p>
+                    <pre>
+easy_install speedtest-cli
+</pre
+                    >
+                    <p><a name="user-content-github"></a></p>
+                    <h3>&nbsp;</h3>
+                    <h4>Github</h4>
+                    <pre>
+pip install git+https://github.com/sivel/speedtest-cli.git
+</pre
+                    >
+                    <p>or</p>
+                    <pre>
+git clone https://github.com/sivel/speedtest-cli.git
+cd speedtest-cli
+python setup.py install
+</pre
+                    >
+                    <p>
+                      <a
+                        name="user-content-just-download-like-the-way-it-used-to-be"
+                      ></a>
+                    </p>
+
+                    <h4>Just download (Like the way it used to be)</h4>
+                    <pre>
+wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+chmod +x speedtest-cli
+</pre
+                    >
+                    <p>or</p>
+                    <pre>
+curl -Lo speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
+chmod +x speedtest-cli
+</pre
+                    >
+                    <div class="ad">
+                      <ins
+                        class="adsbygoogle"
+                        style="display: block; text-align: center"
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-2538726305368557"
+                        data-ad-slot="2239313003"
+                      ></ins>
+                    </div>
+                    <h3>Coding</h3>
+                    <p>First importing the module</p>
+                    <pre><code>import speedtest</code></pre>
+                    <p>Then we define a tester</p>
+                    <pre><code>tester=speedtest.Speedtest()</code></pre>
+                    <p>Choosing the best server for the test</p>
+                    <pre><code>print('Searching for the best server ..')<br />bestServer=tester.get_best_server()<br />print(f'Selecting {bestServer["host"]} located in {bestServer["country"]},{bestServer["name"]}')</code></pre>
+                    <p>Perform a download speed test</p>
+                    <pre><code>print('Checking download speed ..')<br />downloadSpeed=tester.download()<br />print('Done !')</code></pre>
+                    <p>Perform a upload speed test</p>
+                    <pre><code>print('Checking upload speed ..')<br />uploadSpeed=tester.upload()<br />print('Done !')</code></pre>
+                    <p>The ping test is already done</p>
+                    <pre><code>ping=tester.results.ping</code></pre>
+                    <p>Showing the results</p>
+                    <pre><code>print('Results :')<br />print(f'-Download speed : {downloadSpeed/1048576 :.2f} Mbits/s')<br />print(f'-Upload speed : {uploadSpeed/1048576 :.2f} Mbits/s')<br />print(f'-Ping : {ping :.2f} ms')</code></pre>
+                    <h3>Full code</h3>
+                    <pre><code>import speedtest<br /><br />tester=speedtest.Speedtest()<br /><br /><br />print('Searching for the best server ..')<br />bestServer=tester.get_best_server()<br />print(f'Selecting {bestServer["host"]} located in {bestServer["country"]},{bestServer["name"]}')<br /><br />print('Checking download speed ..')<br />downloadSpeed=tester.download()<br />print('Done !')<br /><br />print('Checking upload speed ..')<br />uploadSpeed=tester.upload()<br />print('Done !')<br /><br />ping=tester.results.ping<br /><br />print('Results :')<br />print(f'-Download speed : {downloadSpeed/1048576 :.2f} Mbits/s')<br />print(f'-Upload speed : {uploadSpeed/1048576 :.2f} Mbits/s')<br />print(f'-Ping : {ping :.2f} ms')</code></pre>
+                    <p>This is a basic code you can do modifications&nbsp;</p>
+                    <p>happy coding !</p>
+                    <p></p>
+                    <div class="separator" style="clear: both; margin: 0 auto">
+                      <a
+                        href="https://1.bp.blogspot.com/-u5buFrznJWY/YQV4rx-2M0I/AAAAAAAAARE/O5wo1f2L2O8E1xRfVEZbqVJEv8BWZLFAwCLcBGAsYHQ/s0/internet-speed-tester.webp"
+                        style="
+                          display: block;
+                          padding: 1em 0px;
+                          text-align: center;
+                        "
+                      >
+                        <img
+                          class="lazyload"
+                          alt="Code a simple internet speed tester using python"
+                          data-original-height="203"
+                          data-original-width="450"
+                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                          data-src="https://1.bp.blogspot.com/-u5buFrznJWY/YQV4rx-2M0I/AAAAAAAAARE/O5wo1f2L2O8E1xRfVEZbqVJEv8BWZLFAwCLcBGAsYHQ/s16000/internet-speed-tester.webp"
+                          title="Code a simple internet speed tester using python"
+                        />
+                      </a>
+                    </div>
+                    <p></p>
+                    <!--kg-card-end: html-->
+                  </div>
+                  <div class="container medium">
+                    <!--div class="share u-hover-wrapper">
+                      <a
+                        class="share-item share-facebook u-hover-item"
+                        href="https://www.facebook.com/sharer.php?u=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-facebook"></i>
+                      </a>
+                      <a
+                        class="share-item share-twitter u-hover-item"
+                        href="https://twitter.com/intent/tweet?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;text=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-twitter"></i>
+                      </a>
+                      <a
+                        class="share-item share-pinterest u-hover-item"
+                        href="https://pinterest.com/pin/create/button/?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;media=&amp;description=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                        data-pin-do="none"
+                      >
+                        <i class="icon icon-pinterest"></i>
+                      </a>
+                      <a
+                        class="share-item share-linkedin u-hover-item"
+                        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;title=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-linkedin"></i>
+                      </a>
+                      <a
+                        class="share-item share-reddit u-hover-item"
+                        href="https://reddit.com/submit?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/&amp;title=Ecommerce%20Replatforming%3A%20Know%20When%20to%20Consider%20a%20Migration"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-reddit"></i>
+                      </a>
+                      <a
+                        class="share-item share-pocket u-hover-item"
+                        href="https://getpocket.com/edit?url=https://www.creative-tim.com/blog/webdevelopment/ecommerce-replatforming-know-when-to-consider-a-migration/"
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <i class="icon icon-pocket"></i>
+                      </a>
+                    </div-->
+                    <section class="author">
+                      <div class="author-image-placeholder u-placeholder">
+                        <img
+                          class="author-image u-object-fit lazyload"
+                          data-srcset="https://0.gravatar.com/avatar/3e118fb9391e255fc972dea9534a3480?s=512&amp;d=monsterid&amp;r=g"
+                          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                          srcset="
+                            data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+                          "
+                          alt="mohsin"
+                        />
+                      </div>
+                      <div class="author-wrapper">
+                        <header class="author-header">
+                          <div class="author-header-wrapper">
+                            <h4 class="author-name">mohsin</h4>
+                          </div>
+                        </header>
+                        <div class="author-bio"></div>
+                      </div>
+                    </section>
+                  </div>
+                </article>
+                <section class="related-posts container medium">
+                  <h3 class="related-title">
+                    <span class="text">You might also like...</span>
+                  </h3>
+                  <div class="row">
+                    <div class="col-md-4 related-column">
+                      <article class="post">
+                        <header class="post-header">
+                          <h2 class="post-title">
+                            <a
+                              class="post-title-link"
+                              href="/automate-boring-files-organizing-using-python.html"
+                            >
+                              Python files organizer, automate boring files
+                              organizing using python
+                            </a>
+                          </h2>
+                          <div class="post-meta">
+                            <span class="post-meta-item post-meta-date">
+                              <time datetime="2021-04-15">Apr 15, 2021</time>
+                            </span>
+                            <span class="post-meta-item post-meta-length">
+                              3 min read
+                            </span>
+                          </div>
+                        </header>
+                      </article>
+                    </div>
+                  </div>
+                </section>
+              </main>
+            </div>
+          </div>
+          <div class="sidebar-column col-xl-3 col-lg-3" style="width: 100%">
+            <aside class="widget-area">
+              <div class="widget widget-tags u-shadow">
+                <h4 class="widget-title">Tags</h4>
+                <div class="tag-feed">
+                  <div class="tag">
+                    <a class="tag-link">
+                      <span class="tag-name">Python</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      <footer class="site-footer container large">
+        <div class="copyright">
+          © 2021
+          <a href="https://www.icodes.tech/" target="_blank" rel="noopener">
+            ICODES.TECH
+          </a>
+          , made with ❤️ for a better web.
+        </div>
+
+        <div class="footer-social">
+          <a
+            class="footer-social-item footer-social-item-facebook"
+            href="https://www.facebook.com/gopareh/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a
+            class="footer-social-item footer-social-item-twitter"
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Twitter"
+          >
+            <i class="icon icon-twitter"></i>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <div class="dimmer"></div>
+
+    <div class="off-canvas">
+      <div class="canvas-close">
+        <i class="canvas-icon icon icon-window-close"></i>
+      </div>
+      <div class="mobile-menu"></div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      (function () {
+        var done = false;
+        var script = document.createElement("script");
+        script.async = true;
+        script.type = "text/javascript";
+        script.src =
+          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2538726305368557";
+
+        var createScript = setTimeout(function () {
+          document.getElementsByTagName("head").item(0).appendChild(script);
+        }, 5000);
+
+        script.onreadystatechange = script.onload = function (e) {
+          if (
+            !done &&
+            (!this.readyState ||
+              this.readyState == "loaded" ||
+              this.readyState == "complete")
+          ) {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          }
+        };
+      })();
+    </script>
+    <script src="/blog/main.min.js?v=a12b9ce030"></script>
+  </body>
+</html>
